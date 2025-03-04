@@ -20,6 +20,11 @@ ingredients_list=st.multiselect(
     ,my_dataframe
     ,max_selections = 5
 )
+#New section to display smoothiefruit nutrition information
+import_requests
+smoothiefroot_response=request.get("//https:my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
+
 if ingredients_list:
     ingredients_string = ''
 
