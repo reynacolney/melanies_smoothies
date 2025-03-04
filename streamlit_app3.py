@@ -20,10 +20,7 @@ ingredients_list=st.multiselect(
     ,my_dataframe
     ,max_selections = 5
 )
-#New section to display smoothiefruit nutrition information
-import_requests
-smoothiefroot_response=request.get("//https:my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response)
+
 
 if ingredients_list:
     ingredients_string = ''
@@ -32,7 +29,6 @@ if ingredients_list:
          ingredients_string +=fruit_chosen + ' '
 
         #st.write(ingredients_string)
-
 
     my_insert_stmt= """insert into smoothies.public.orders(ingredients,name_on_order)
        values ('"""+ingredients_string+"""','"""+name_on_order+"""')"""
@@ -44,3 +40,7 @@ if ingredients_list:
      session.sql(my_insert_stmt).collect()
 
      st.success('Your Smoothie is ordered, ' +name_on_order+'!')
+ #New section to display smoothiefruit nutrition information
+import_requests
+smoothiefroot_response=request.get("//https:my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
